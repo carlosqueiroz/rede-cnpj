@@ -10,8 +10,10 @@ COPY . /app
 # Instala as dependências do 'rede'
 RUN pip install --upgrade pip && pip install -r rede/requirements.txt
 
-# Instala as dependências do 'rede_cria_tabelas'
+# Instala as dependências do 'rede_cria_tabelas' e lxml
 RUN pip install -r rede_cria_tabelas/requirements.txt
+RUN apt-get update && apt-get install -y libxml2-dev libxslt1-dev
+RUN pip install lxml
 
 # Baixa os arquivos zip do site de Dados Abertos
 RUN python rede_cria_tabelas/dados_cnpj_baixa.py
