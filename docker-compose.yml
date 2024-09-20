@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  redecnpj:
+    build: .
+    container_name: redecnpj
+    volumes:
+      - ./dados-publicos:/app/dados-publicos
+      - ./dados-publicos-zip:/app/dados-publicos-zip
+    networks:
+      - redecnpj-net
+
+networks:
+  redecnpj-net:
+    driver: bridge
